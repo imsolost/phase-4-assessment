@@ -1,6 +1,6 @@
 const db = require('./db')
 
-getRecentReviews = () => {
+const getRecentReviews = () => {
   return db.query(`
     SELECT * FROM reviews
     JOIN albums USING(album_id)
@@ -14,7 +14,7 @@ getRecentReviews = () => {
     })
 }
 
-createReview = (user_id, album_id, content) => {
+const createReview = (user_id, album_id, content) => {
   return db.none(`
     INSERT INTO reviews (user_id, album_id, content)
     VALUES ($1, $2, $3)`,
@@ -25,7 +25,7 @@ createReview = (user_id, album_id, content) => {
     })
 }
 
-deleteReview = (review_id) => {
+const deleteReview = (review_id) => {
   return db.none(`
     DELETE FROM reviews
     WHERE review_id = $1`,
@@ -36,7 +36,7 @@ deleteReview = (review_id) => {
     })
 }
 
-getReviewById = (review_id) => {
+const getReviewById = (review_id) => {
   return db.one(`
     SELECT* FROM reviews
     FULL OUTER JOIN users USING(user_id)

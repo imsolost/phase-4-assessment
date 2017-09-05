@@ -1,6 +1,6 @@
 const db = require('./db')
 
-getAll = () => {
+const getAll = () => {
   return db.query(`SELECT * FROM albums`, [])
     .catch((error) => {
       console.log('\nError in getAll query\n')
@@ -8,7 +8,7 @@ getAll = () => {
     })
 }
 
-getByTitle = (title) => {
+const getByTitle = (title) => {
   return db.query(`
     SELECT * FROM albums
     FULL OUTER JOIN reviews USING(album_id)

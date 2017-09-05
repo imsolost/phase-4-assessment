@@ -49,10 +49,10 @@ router.route('/signin')
     const username = req.body.username
     users.getByUsername(username)
       .then((user) => {
-        if (req.body.password === user[0].password) {
+        if (user[0] && req.body.password === user[0].password) {
           req.session.user = user[0]
           req.session.save(res.redirect(`/profile/${username}`))
-        } else res.send('incorrect password')
+        } else res.redirect('/signin')
       })
       .catch(error => res.status(500).render('error', {error}))
   })

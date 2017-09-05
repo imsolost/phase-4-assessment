@@ -1,6 +1,6 @@
 console.log('hello from the browser JavaScript')
 
-emptyCheck = () => {
+const emptyCheck = () => {
   const inputs = document.querySelectorAll('.form-input')
 
   for (let i = 0; i < inputs.length; i++) {
