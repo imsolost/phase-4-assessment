@@ -1,10 +1,31 @@
-<title>Vinyl : <%= album.title %></title>
+<title>Vinyl: <%= album[0].title %></title>
 
 <%- include partials/header.ejs %>
 
-  <h1><%= album.title %></h1>
-  <em>by <%= album.artist %></em>
+  <div class='post-column'>
+    <h1><%= album[0].title %></h1>
+    <em>by <%= album[0].artist %></em>
+    <div class="row-space-between">
+      <h2>Reviews</h2>
+      <% if (loggedIn) { %>
+      <a href="/new-review/<%= album[0].title %>" class="new-review-button"> New Review </a>
+      <% } %>
+    </div>
 
-  <h2>Reviews</h2>
+    <% if (album[0].review_id) {
+      album.forEach( review => { %>
+        <div class='box blue-box'>
+          <div class="row-space-between">
+            <h3> <a href="/albums/<%= review.title%>" > <%= review.title %> </a> </h3>
+            <p> <%= moment(review.review_date).fromNow() %> </p>
+          </div>
+          <p> <%= review.content %> </p>
+          <p> by <a href="/profile/<%= review.username%>" > <%= review.username %> </a> </p>
+        </div>
+      <% })
+    } else { %>
+      <p class='box blue-box'> This album has no reviews </p>
+    <% } %>
+  </div>
 
 <%- include partials/footer.ejs %>
