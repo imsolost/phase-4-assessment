@@ -43,4 +43,28 @@ router.route('/signup')
       .catch(error => res.status(500).render('error', {error}))
   })
 
+router.route('/signin')
+  .get((req, res) => res.render('signin'))
+  .post((req, res) => {
+    const username = req.body.username
+    users.getByUsername(username)
+      .then((user) => {
+        if (req.body.password === user[0].password) {
+          req.session.user = user[0]
+          req.session.save(res.redirect(`/profile/${username}`))
+        } else res.send('incorrect password')
+      })
+      .catch(error => res.status(500).render('error', {error}))
+  })
+
+router.get('/logout', (req, res) => {
+  req.session.destroy(res.redirect('/'))
+})
+
+router.get('/profile/:username', (req, res) => {
+  users.getByUsername(req.params.username)
+    .then(reviews => res.render('profile', {reviews, moment}))
+    .catch(error => res.status(500).render('error', {error}))
+})
+
 module.exports = router
