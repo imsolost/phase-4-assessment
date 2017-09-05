@@ -1,27 +1,28 @@
-const db = require('../db')
+const users = require('../db/users.js')
+const albums = require('../db/albums.js')
 const router = require('express').Router()
 
 router.get('/', (req, res) => {
-  db.getAlbums((error, albums) => {
-    if (error) {
-      res.status(500).render('error', {error})
-    } else {
-      res.render('index', {albums})
-    }
-  })
+  albums.getAll()
+    .then(albums => res.render('index', {albums}))
+    .catch(error => res.status(500).render('error', {error}))
 })
 
-router.get('/albums/:albumID', (req, res) => {
-  const albumID = req.params.albumID
-
-  db.getAlbumsByID(albumID, (error, albums) => {
-    if (error) {
-      res.status(500).render('error', {error})
-    } else {
-      const album = albums[0]
-      res.render('album', {album})
-    }
-  })
+router.get('/albums/:albumId', (req, res) => {
+  albums.getById(req.params.albumId)
+    .then(album => res.render('album', {album}))
+    .catch(error => res.status(500).render('error', {error}))
 })
+
+router.route('/signup')
+  .get((req, res) => res.render('signup'))
+  .post((req, res) => {
+    users.create(req.body.username, req.body.email, req.body.password)
+      .then(() => {
+        req.session.user = {username: req.body.username}
+        req.session.save(res.redirect(`/profile/${req.body.username}`))
+      })
+      .catch(error => res.status(500).render('error', {error}))
+  })
 
 module.exports = router

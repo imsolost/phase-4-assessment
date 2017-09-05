@@ -13,7 +13,7 @@
     "db:create": "createdb vinyl",
     "db:drop": "dropdb vinyl",
     "db:schema": "psql -d vinyl < src/db/schema.sql",
-    "db:seed": "psql -d vinyl < src/db/albums.sql",
+    "db:seed": "psql -d vinyl < src/db/seed.sql",
     "load_session_store": "psql vinyl < node_modules/connect-pg-simple/table.sql",
     "test": "./node_modules/.bin/eslint src"
   },

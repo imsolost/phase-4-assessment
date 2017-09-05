@@ -58,3 +58,14 @@ button {
   color: #222;
   margin: 0 3em 0 3em;
 }
+
+.vinyl {
+  font-size: 3em;
+}
+
+.form-input {
+  padding: .5em;
+  border-radius: 5px;
+  border: 3px inset teal;
+  width: 100%;
+}
