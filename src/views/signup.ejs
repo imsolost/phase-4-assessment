@@ -6,14 +6,14 @@
 
     <form class="signup-signin" action="/signup" method="post">
       <p>Username:</p>
-      <input class="form-input" type="text" name="username">
+      <input id="form-input" class="form-input" type="text" name="username">
       <p>E-mail:</p>
       <input class="form-input" type="text" name="email">
       <p>Password</p>
       <input class="form-input" type="password" name="password">
       <br/>
       <br/>
-      <button type="submit">Sign Up</button>
+      <button type="submit" onClick="return emptyCheck()">Sign Up</button>
     </form>
 
   </div>

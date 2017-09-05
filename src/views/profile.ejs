@@ -1,0 +1,34 @@
+<title>Vinyl: <%= reviews[0].username %></title>
+
+<%- include partials/header.ejs %>
+
+  <img class='profile-pic' src='<%= reviews[0].picture %>' style='height:175px'/>
+
+  <div class='user-column'>
+    <h2><%= reviews[0].username %></h2>
+    <p>Email: <%= reviews[0].email %></p>
+    <p>Join Date: <%= moment(reviews[0].join_date).format('MMM-DD-YY') %></p>
+  </div>
+
+  <div class='post-column'>
+    <h2>Reviews</h2>
+    <% if (reviews[0].review_id) {
+      reviews.forEach( review => { %>
+        <div class='box blue-box'>
+          <div class="row-space-between">
+            <h3> <a href="/albums/<%= review.title%>" > <%= review.title %> </a> </h3>
+            <p> <%= moment(review.review_date).fromNow() %> </p>
+            <% if (reviews[0].username === username) { %>
+              <img id="<%= review.review_id%>" src="/trashcan.png" alt="trashcan" class="trashcan" style='height:2em'>
+            <% } %>
+          </div>
+          <p> <%= review.content %> </p>
+          <p> by <a href="/profile/<%= review.username%>" > <%= review.username %> </a> </p>
+        </div>
+      <% })
+    } else { %>
+      <p class='box blue-box'> This user has no reviews </p>
+    <% } %>
+  </div>
+
+<%- include partials/footer.ejs %>

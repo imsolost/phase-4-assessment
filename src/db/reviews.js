@@ -8,8 +8,8 @@ getRecentReviews = () => {
     ORDER BY review_id DESC
     LIMIT 3`,
     [])
-    .catch( (error) => {
-      console.log("\nError in getAll query\n")
+    .catch((error) => {
+      console.log('\nError in getAll query\n')
       throw error
     })
 }
@@ -20,7 +20,7 @@ createReview = (user_id, album_id, content) => {
     VALUES ($1, $2, $3)`,
     [user_id, album_id, content])
     .catch((error) => {
-      console.log("\nError in posts.create query\n")
+      console.log('\nError in posts.create query\n')
       throw error
     })
 }
@@ -31,7 +31,7 @@ deleteReview = (review_id) => {
     WHERE review_id = $1`,
     [review_id])
     .catch((error) => {
-      console.log("\nError in posts.create query\n")
+      console.log('\nError in posts.create query\n')
       throw error
     })
 }
@@ -43,7 +43,7 @@ getReviewById = (review_id) => {
     WHERE review_id = $1`,
     [review_id])
     .catch((error) => {
-      console.log("\nError in posts.create query\n")
+      console.log('\nError in posts.create query\n')
       throw error
     })
 }

@@ -14,8 +14,7 @@ a {
     text-decoration: none;
 }
 
-a:hover
-{
+a:hover {
      color:#00A0C6;
      text-decoration:none;
      cursor:pointer;
@@ -45,6 +44,13 @@ button {
   align-items: center;
 }
 
+.row-space-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .navbar {
   background-color: teal;
   border-bottom: 3px solid #222;
@@ -68,4 +74,23 @@ button {
   border-radius: 5px;
   border: 3px inset teal;
   width: 100%;
+}
+
+.profile-pic {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
+  margin-top: 1.25em;
+}
+
+.post-column {
+  width: 30%
+}
+
+.new-review-button {
+  border-radius: 5px;
+  background-color: lightgrey;
+  border: 3px outset lightgrey;
+}
+
+.trashcan:hover {
+     cursor:pointer;
 }

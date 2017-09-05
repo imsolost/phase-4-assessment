@@ -2,7 +2,7 @@ const db = require('./db')
 
 getAll = () => {
   return db.query(`SELECT * FROM albums`, [])
-    .catch( (error) => {
+    .catch((error) => {
       console.log('\nError in getAll query\n')
       throw error
     })
@@ -16,7 +16,7 @@ getByTitle = (title) => {
     WHERE albums.title = $1
     ORDER BY review_id DESC`,
     [title])
-    .catch( (error) => {
+    .catch((error) => {
       console.log('\nError in getByTitle query\n')
       throw error
     })

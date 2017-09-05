@@ -7,7 +7,7 @@ create = (username, email, password) => {
     RETURNING user_id`,
     [username, email, password])
     .catch((error) => {
-      console.log("\nError in create query\n")
+      console.log('\nError in create query\n')
       throw error
     })
 }
@@ -21,7 +21,7 @@ getByUsername = (username) => {
     ORDER BY review_id DESC`,
     [username])
     .catch((error) => {
-      console.log("\nError in getByUsername query\n")
+      console.log('\nError in getByUsername query\n')
       throw error
     })
 }
