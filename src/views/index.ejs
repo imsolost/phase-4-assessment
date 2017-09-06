@@ -15,12 +15,14 @@
     <% if (reviews[0].review_id) {
       reviews.forEach( review => { %>
         <div class='box blue-box'>
-          <div class="row-space-between">
-            <h3> <a href="/albums/<%= review.title%>" > <%= review.title %> </a> </h3>
-            <p> <%= moment(review.review_date).format('MMM-DD-YY') %> </p>
+          <div class="red-box">
+            <div class="row-space-between">
+              <h3> <a href="/albums/<%= review.title%>" > <%= review.title %> </a> </h3>
+              <p> <%= moment(review.review_date).format('MMM-DD-YY') %> </p>
+            </div>
+            <p> <%= review.content %> </p>
+            <p> by <a href="/profile/<%= review.username%>" > <%= review.username %> </a> </p>
           </div>
-          <p> <%= review.content %> </p>
-          <p> by <a href="/profile/<%= review.username%>" > <%= review.username %> </a> </p>
         </div>
       <% })
     } else { %>
