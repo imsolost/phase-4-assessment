@@ -8,7 +8,7 @@
     <div class="row-space-between">
       <h2>Reviews</h2>
       <% if (loggedIn) { %>
-      <a href="/reviews/<%= album[0].title %>/new" class="new-review-button"> Add Review </a>
+      <a href="/reviews/new/<%= album[0].title %>" class="new-review-button"> Add Review </a>
       <% } %>
     </div>
 

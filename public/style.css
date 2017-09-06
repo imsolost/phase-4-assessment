@@ -101,6 +101,6 @@ button {
 }
 
 .blue-box {
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
   margin-bottom: 1em;
 }

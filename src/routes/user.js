@@ -2,7 +2,7 @@ const reviews = require('../db/reviews.js')
 const albums = require('../db/albums.js')
 const router = require('express').Router()
 
-router.route('/reviews/:title/new')
+router.route('/reviews/new/:title')
   .get((req, res) => {
     albums.getByTitle(req.params.title)
       .then(album => res.render('new-review', {album}))
