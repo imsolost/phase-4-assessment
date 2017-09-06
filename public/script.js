@@ -10,3 +10,17 @@ const emptyCheck = () => {
     }
   }
 }
+
+const deletePopup = () => {
+  if (confirm('Are you sure you want to delete this post?')) {
+    fetch(`/delete/${event.target.id}`, {
+      method: 'delete',
+      credentials: 'include',
+    })
+      .then(location.reload())
+  }
+}
+
+document.querySelectorAll('.trashcan').forEach((button) => {
+  button.addEventListener('click', deletePopup)
+})
