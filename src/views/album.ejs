@@ -8,7 +8,7 @@
     <div class="row-space-between">
       <h2>Reviews</h2>
       <% if (loggedIn) { %>
-      <a href="/new-review/<%= album[0].title %>" class="new-review-button"> New Review </a>
+      <a href="/reviews/<%= album[0].title %>/new" class="new-review-button"> Add Review </a>
       <% } %>
     </div>
 
@@ -18,6 +18,9 @@
           <div class="row-space-between">
             <h3> <a href="/albums/<%= review.title%>" > <%= review.title %> </a> </h3>
             <p> <%= moment(review.review_date).fromNow() %> </p>
+            <% if (review.username === username) { %>
+              <img id="<%= review.review_id%>" src="/trashcan.png" alt="trashcan" class="trashcan">
+            <% } %>
           </div>
           <p> <%= review.content %> </p>
           <p> by <a href="/profile/<%= review.username%>" > <%= review.username %> </a> </p>

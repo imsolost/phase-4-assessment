@@ -92,5 +92,15 @@ button {
 }
 
 .trashcan:hover {
-     cursor:pointer;
+  cursor:pointer;
+}
+
+.trashcan {
+  height: 2em;
+  margin: .2em 0 0 .2em;
+}
+
+.blue-box {
+  border: 1px solid blue;
+  margin-bottom: 1em;
 }
