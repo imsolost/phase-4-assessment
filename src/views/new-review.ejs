@@ -5,12 +5,12 @@
 <div class="column center">
   <h2>New review for <%= album[0].title %> </h2>
 
-  <form class="new-review-form" action="/new-review/<%= album[0].title %>" method="post">
-    <textarea class="form-input" rows="10" name="content"></textarea>
+  <form class="new-review-form" action="/reviews/new/<%= album[0].title %>" method="post">
+    <textarea class="form-input" rows="10" name="content" required></textarea>
     <input name="album_id" value="<%= album[0].album_id %>" style="display:none">
     <br/>
     <br/>
-    <button type="submit" onClick="return emptyCheck()">Submit</button>
+    <button type="submit">Submit</button>
   </form>
 </div>
 

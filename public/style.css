@@ -79,6 +79,7 @@ button {
 .profile-pic {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
   margin-top: 1.25em;
+  height: 175px;
 }
 
 .post-column {
