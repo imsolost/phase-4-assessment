@@ -1,6 +1,6 @@
 const db = require('./db')
 
-create = (username, email, password) => {
+const create = (username, email, password) => {
   return db.one(`
     INSERT INTO users (username, email, password)
     VALUES ($1, $2, $3)
@@ -12,7 +12,7 @@ create = (username, email, password) => {
     })
 }
 
-getByUsername = (username) => {
+const getByUsername = (username) => {
   return db.query(`
     SELECT * FROM users
     FULL OUTER JOIN reviews USING(user_id)
@@ -28,5 +28,5 @@ getByUsername = (username) => {
 
 module.exports = {
   create,
-  getByUsername
+  getByUsername,
 }

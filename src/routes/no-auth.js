@@ -4,7 +4,7 @@ const reviews = require('../db/reviews.js')
 const moment = require('moment')
 const router = require('express').Router()
 
-getAlbums = (req, res, next) => {
+const getAlbums = (req, res, next) => {
   albums.getAll()
     .then((albums) => {
       req.albums = albums
@@ -12,15 +12,15 @@ getAlbums = (req, res, next) => {
     })
 }
 
-getReviews = (req, res, next) => {
-  reviews.getRecentReviews()
+const getReviews = (req, res, next) => {
+  reviews.getRecent()
     .then((reviews) => {
       req.reviews = reviews
       next()
     })
 }
 
-renderIndex = (req, res) => {
+const renderIndex = (req, res) => {
   res.render('index', {albums: req.albums, reviews: req.reviews, moment})
 }
 

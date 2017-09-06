@@ -1,5 +1,4 @@
 const router = require('express').Router()
-// const user = require('./user')
 
 router.use((req, res, next) => {
   let loggedIn
@@ -13,6 +12,6 @@ router.use((req, res, next) => {
 })
 
 router.use('/', require('./no-auth'))
-// router.use('/', user)
+router.use('/', require('./user'))
 
 module.exports = router
