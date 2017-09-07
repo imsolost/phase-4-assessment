@@ -112,3 +112,7 @@ button {
   /*border: 1px solid red;*/
   width: 92%
 }
+
+.album-list {
+  align-self: flex-start;
+}
