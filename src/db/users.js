@@ -4,7 +4,7 @@ const create = (username, email, password) => {
   return db.one(`
     INSERT INTO users (username, email, password)
     VALUES ($1, $2, $3)
-    RETURNING user_id`,
+    RETURNING *`,
     [username, email, password])
     .catch((error) => {
       console.log('\nError in create query\n')
