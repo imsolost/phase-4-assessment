@@ -20,7 +20,7 @@ const create = (user_id, album_id, content) => {
     VALUES ($1, $2, $3)`,
     [user_id, album_id, content])
     .catch((error) => {
-      console.log('\nError in posts.create query\n')
+      console.log('\nError in create query\n')
       throw error
     })
 }
@@ -31,19 +31,19 @@ const remove = (review_id) => {
     WHERE review_id = $1`,
     [review_id])
     .catch((error) => {
-      console.log('\nError in posts.create query\n')
+      console.log('\nError in remove query\n')
       throw error
     })
 }
 
 const getById = (review_id) => {
   return db.one(`
-    SELECT* FROM reviews
+    SELECT * FROM reviews
     FULL OUTER JOIN users USING(user_id)
     WHERE review_id = $1`,
     [review_id])
     .catch((error) => {
-      console.log('\nError in posts.create query\n')
+      console.log('\nError in getById query\n')
       throw error
     })
 }

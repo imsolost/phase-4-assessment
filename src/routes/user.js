@@ -2,7 +2,7 @@ const reviews = require('../db/reviews.js')
 const albums = require('../db/albums.js')
 const router = require('express').Router()
 
-router.route('/reviews/new/:title')
+router.route('/reviews/new/:title') //albums/id or title/ reviews/ new
   .get((req, res) => {
     albums.getByTitle(req.params.title)
       .then(album => res.render('new-review', {album}))
@@ -19,11 +19,10 @@ router.route('/reviews/new/:title')
 
 router.delete('/delete/:review_id', (req, res) => {
   reviews.getById(req.params.review_id)
-    .then((review) => {
-      if (review.username === req.session.user.username) {
-        reviews.remove(req.params.review_id)
-      } else res.redirect('/')
+    .then(() => {
+      return reviews.remove(req.params.review_id)
     })
+    .then(() => res.json({message: 'successful delete'}))
     .catch(error => res.status(500).render('error', {error}))
 })
 

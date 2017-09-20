@@ -50,7 +50,7 @@ router.route('/signin')
     users.getByUsername(username)
       .then((user) => {
         if (user[0] && req.body.password === user[0].password) {
-          req.session.user = user[0]
+          req.session.user = {username: user[0].username, user_id: user[0].user_id}
           req.session.save(res.redirect(`/profile/${username}`))
         } else res.redirect('/signin')
       })
